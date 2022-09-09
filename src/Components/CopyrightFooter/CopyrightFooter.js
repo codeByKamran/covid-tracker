@@ -3,8 +3,6 @@ import { Grid, makeStyles, Chip } from "@material-ui/core";
 import { GitHub, Twitter, Language, LinkedIn } from "@material-ui/icons";
 
 import "./CopyrightFooter.css";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const useStyles = makeStyles(() => ({
   footerSection: {
@@ -19,18 +17,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const CopyrightFooter = () => {
-  const [azProfile, setAzProfile] = useState(true);
   const c = useStyles();
-
-  useEffect(() => {
-    if (window !== "undefined") {
-      setAzProfile(
-        window.location.hostname === "covidtracker.azharzaman.com"
-          ? true
-          : false
-      );
-    }
-  }, []);
 
   return (
     <div
@@ -41,43 +28,20 @@ const CopyrightFooter = () => {
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <Heading2 className="footerSection__heading">
-            Design and developed by Azhar Zaman
+            Design and developed by Kamran Ashraf
           </Heading2>
         </Grid>
         <Grid item container justifyContent="center">
           <MuiChip
-            link={
-              azProfile
-                ? "https://azharzaman.com"
-                : "https://kamranashraf.vercel.app"
-            }
+            link="https://kamranashraf.vercel.app"
             title="Website"
             icon={<Language fontSize="small" />}
           />
           <MuiChip
-            link={
-              azProfile
-                ? "https://github.com/azharzaman1"
-                : "https://github.com/codeByKamran"
-            }
+            link="https://github.com/codeByKamran"
             title="Github"
             icon={<GitHub fontSize="small" />}
           />
-          ]
-          {azProfile && (
-            <>
-              <MuiChip
-                link="https://www.linkedin.com/in/azhar-zaman"
-                title="LinkedIn"
-                icon={<LinkedIn fontSize="small" />}
-              />
-              <MuiChip
-                link="https://twitter.com/idrazhar"
-                title="Twitter"
-                icon={<Twitter fontSize="small" />}
-              />
-            </>
-          )}
         </Grid>
       </Grid>
     </div>
